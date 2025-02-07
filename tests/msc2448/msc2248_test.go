@@ -86,8 +86,8 @@ func TestServerCalculatesBlurhashWhenRequestedTo(t *testing.T) {
 	})
 }
 
-// see https://github.com/matrix-org/matrix-spec-proposals/blob/anoa/blurhash/proposals/2448-blurhash-for-media.md#calculating-a-blurhash-on-the-server,
-// this checks if the server calculates a blurhash and then returns it.
+// see https://github.com/matrix-org/matrix-spec-proposals/blob/anoa/blurhash/proposals/2448-blurhash-for-media.md#mroommessage,
+// this check if the server preserves blurhashes in messages
 func TestServerPreservesBlurhashInMessage(t *testing.T) {
 	deployment := complement.Deploy(t, 1)
 	defer deployment.Destroy(t)
@@ -124,8 +124,8 @@ func TestServerPreservesBlurhashInMessage(t *testing.T) {
 	}))
 }
 
-// see https://github.com/matrix-org/matrix-spec-proposals/blob/anoa/blurhash/proposals/2448-blurhash-for-media.md#calculating-a-blurhash-on-the-server,
-// this checks if the server calculates a blurhash and then returns it.
+// see https://github.com/matrix-org/matrix-spec-proposals/blob/anoa/blurhash/proposals/2448-blurhash-for-media.md#profile-endpoints,
+// this checks if the server properly propagates and queries for the metadata in the avatar url
 func TestServerReturnsBlurhashForProfilePicture(t *testing.T) {
 	deployment := complement.Deploy(t, 2)
 	srv := federation.NewServer(t, deployment,
