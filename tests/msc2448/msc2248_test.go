@@ -155,7 +155,7 @@ func TestServerReturnsBlurhashForProfilePicture(t *testing.T) {
 		})
 		t.Run("Make sure a user on another homeserver can get url", func(t *testing.T) {
 			t.Parallel()
-			bob := deployment.Register(t, "hs1", helpers.RegistrationOpts{})
+			bob := deployment.Register(t, "hs2", helpers.RegistrationOpts{})
 			resp := bob.MustDo(t, "GET", []string{"_matrix", "client", "v3", "profile", alice.UserID, "avatar_url"})
 			js := must.ParseJSON(t, resp.Body)
 			must.Equal(t, must.GetJSONFieldStr(t, js, "xyz\\.amorgan\\.blurhash"), defaultImageBlur, "blurhash is not equal to one set by client")
